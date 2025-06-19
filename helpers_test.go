@@ -102,7 +102,10 @@ func TestMultipartFormToken(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	mp.Close()
+	err = mp.Close()
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	r = httptest.NewRequest("POST", "/", &b)
 	r.Host = "www.gorillatoolkit.org"

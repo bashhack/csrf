@@ -254,7 +254,7 @@ func (cs *csrf) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// HTTP methods not defined as idempotent ("safe") under RFC7231 require
 	// inspection.
-	if !contains(safeMethods, r.Method) {
+	if !slices.Contains(safeMethods, r.Method) {
 		var isPlaintext bool
 		val := r.Context().Value(PlaintextHTTPContextKey)
 		if val != nil {
